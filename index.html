@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia da Evy para a NHL</title>
+    <!-- Ícone da NHL simulado por favicon SVG -->
+    <link rel="icon" type="image/svg+xml" href="nhl-logo.svg">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo-area">
+                <div class="nhl-icon-shield">
+                    <i class="fa-solid fa-hockey-puck"></i>
+                    <span>NHL</span>
+                </div>
+                <div>
+                    <h1>Guia da Evy para a NHL</h1>
+                    <p>O manual definitivo do hóquei no gelo para iniciantes</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="#rinque"><i class="fa-solid fa-ruler-combined"></i> Rinque</a>
+                <a href="#regras"><i class="fa-solid fa-book-open"></i> Regras</a>
+                <a href="#linhas"><i class="fa-solid fa-people-group"></i> Linhas</a>
+                <a href="#times"><i class="fa-solid fa-shield-halved"></i> 32 Times</a>
+                <a href="#playoffs"><i class="fa-solid fa-trophy"></i> Playoffs</a>
+                <a href="#quiz"><i class="fa-solid fa-gamepad"></i> Quiz</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="badge">Aventura no Gelo</span>
+                <h2>Bem-vindo ao esporte mais rápido do mundo!</h2>
+                <p>O hóquei da National Hockey League (NHL) une velocidade alucinante, contato físico intenso, táticas refinadas e muita emoção. Prepare seu patins e venha dominar todas as regras e times!</p>
+                <div class="hero-buttons">
+                    <a href="#regras" class="btn btn-primary"><i class="fa-solid fa-bolt"></i> Começar a Aprender</a>
+                    <a href="#times" class="btn btn-outline"><i class="fa-solid fa-shield"></i> Ver os 32 Times</a>
+                </div>
+            </div>
+            <div class="hero-card-container">
+                <div class="stat-card">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <div>
+                        <h3>Até 50 km/h+</h3>
+                        <p>Velocidade média dos patinadores no gelo</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fa-solid fa-stopwatch"></i>
+                    <div>
+                        <h3>Turnos de 45 seg</h3>
+                        <p>Duração intensa de cada troca em pista</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fa-solid fa-fire"></i>
+                    <div>
+                        <h3>Stanley Cup</h3>
+                        <p>O troféu mais antigo e cobiçado do esporte</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container main-content">
+        
+        <!-- SEÇÃO 1: O RINQUE E FUNDAMENTOS -->
+        <section id="rinque" class="section-box">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-map"></i> O Rinque e a Dinâmica</h2>
+                <p>Conheça o campo de batalha congelado e suas marcações essenciais</p>
+            </div>
+            <div class="grid-2">
+                <div class="rink-visual-container">
+                    <div class="rink-graphic" id="rinkGraphic">
+                        <div class="rink-zone attacking">Ataque</div>
+                        <div class="rink-zone neutral">Zona Neutra (Linha Vermelha)</div>
+                        <div class="rink-zone defending">Defesa</div>
+                        <div class="rink-spot faceoff-left"></div>
+                        <div class="rink-spot faceoff-right"></div>
+                    </div>
+                    <p class="text-center text-sm mt-2 text-muted">Clique nas zonas acima para ver detalhes de posicionamento.</p>
+                </div>
+                <div class="rink-info">
+                    <h3>Anatomia do Gelo</h3>
+                    <ul class="feature-list">
+                        <li><strong>Linhas Azuis:</strong> Dividem a pista em três zonas principais (Defesa, Neutra e Ataque).</li>
+                        <li><strong>Linha Vermelha Central:</strong> Divide o rinque ao meio, crucial para infrações de <em>Icing</em>.</li>
+                        <li><strong>Gols (Cages):</strong> Cada rede tem 1,83m de largura por 1,22m de altura. Atrás dela fica a área de manobra do goleiro.</li>
+                        <li><strong>Área de Faceoff:</strong> 9 círculos na pista onde o árbitro joga o disco para reiniciar o jogo.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: REGRAS ESSENCIAIS -->
+        <section id="regras" class="section-box">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-book-bookmark"></i> Regras de Ouro & Punições</h2>
+                <p>Entenda o que é permitido e o que leva o jogador direto para a "geladeira"</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card rule-card">
+                    <div class="card-icon"><i class="fa-solid fa-ban"></i></div>
+                    <h3>Offside (Impedimento)</h3>
+                    <p>O jogador atacante não pode entrar na zona de ataque antes do disco cruzar a linha azul. Se entrar, o jogo é paralisado para faceoff.</p>
+                </div>
+                <div class="card rule-card">
+                    <div class="card-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                    <h3>Icing (Bola Longa / Icagem)</h3>
+                    <p>Acontece quando um jogador chuta o disco desde trás de sua própria linha vermelha diretamente para além da linha de gol adversária, sem ninguém tocar.</p>
+                </div>
+                <div class="card rule-card">
+                    <div class="card-icon"><i class="fa-solid fa-clock"></i></div>
+                    <h3>Punições Menores (2 Min)</h3>
+                    <p>Infrações comuns como <em>Tripping</em> (rasteira), <em>Slashing</em> (pancada com o bastão) ou <em>Hooking</em> (segurar com o bastão). Deixam o time com um a menos.</p>
+                </div>
+                <div class="card rule-card">
+                    <div class="card-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+                    <h3>Power Play & Penalty Kill</h3>
+                    <p>Durante a punição, o time penalizado joga no <em>Penalty Kill</em> (inferioridade numérica), enquanto o rival comanda o devastador <em>Power Play</em> (5x4).</p>
+                </div>
+            </div>
+
+            <!-- SIMULADOR INTERATIVO DE POWER PLAY -->
+            <div class="interactive-simulator">
+                <h3><i class="fa-solid fa-gamepad"></i> Simulador de Situação de Jogo</h3>
+                <p>Teste como a formação muda quando há uma punição no gelo:</p>
+                <div class="sim-controls">
+                    <button class="sim-btn active" onclick="setSimMode('5v5')">5 contra 5 (Normal)</button>
+                    <button class="sim-btn" onclick="setSimMode('pp')">Power Play (5x4)</button>
+                    <button class="sim-btn" onclick="setSimMode('ot')">Prorrogação 3x3 (Overtime)</button>
+                </div>
+                <div class="sim-display" id="simDisplay">
+                    <div class="team-box home">
+                        <h4>Seu Time (Ataque)</h4>
+                        <p id="homePlayers">5 Patinadores + 1 Goleiro</p>
+                    </div>
+                    <div class="vs-badge">VS</div>
+                    <div class="team-box away">
+                        <h4>Adversário (Defesa)</h4>
+                        <p id="awayPlayers">5 Patinadores + 1 Goleiro</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: LINHAS E TÁTICA -->
+        <section id="linhas" class="section-box">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-people-arrows"></i> O Sistema de Linhas (Lines)</h2>
+                <p>O hóquei é jogado com trocas constantes em ritmo frenético. Clique para conhecer cada linha:</p>
+            </div>
+            <div class="line-selector">
+                <button class="line-tab active" onclick="showTactics('atacantes')">Atacantes (Forwards)</button>
+                <button class="line-tab" onclick="showTactics('defensores')">Defensores (Defensemen)</button>
+                <button class="line-tab" onclick="showTactics('goleiro')">Goleiro (Goaltender)</button>
+            </div>
+            <div class="tactics-content" id="tacticsContent">
+                <!-- Conteúdo injetado via JS -->
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: OS 32 TIMES DA NHL -->
+        <section id="times" class="section-box">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-shield-cat"></i> Os 32 Times da NHL</h2>
+                <p>Explore as equipes divididas por Conferências e Divisões. Filtre por conferência:</p>
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterTeams('all')">Todos (32)</button>
+                <button class="filter-btn" onclick="filterTeams('Eastern')">Conferência Leste</button>
+                <button class="filter-btn" onclick="filterTeams('Western')">Conferência Oeste</button>
+            </div>
+            <div class="teams-grid" id="teamsGrid">
+                <!-- Preenchido via app.js com dados reais -->
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: PLAYOFFS E STANLEY CUP -->
+        <section id="playoffs" class="section-box">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-trophy"></i> Rumo à Stanley Cup (Playoffs)</h2>
+                <p>Como funciona a emocionante pós-temporada da NHL</p>
+            </div>
+            <div class="grid-2">
+                <div class="playoff-step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h3>Temporada Regular (82 Jogos)</h3>
+                        <p>Cada time joga 82 partidas de outubro a abril. Os 3 melhores de cada divisão e mais 2 <em>Wild Cards</em> por conferência se classificam (16 equipes no total).</p>
+                    </div>
+                </div>
+                <div class="playoff-step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h3>Séries Melhores de 7</h3>
+                        <p>Todas as fases dos playoffs (Primeira Rodada, Finais de Divisão, Finais de Conferência e Grande Final) são decididas em séries em melhor de 7 partidas.</p>
+                    </div>
+                </div>
+                <div class="playoff-step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h3>A Glória da Stanley Cup</h3>
+                        <p>O campeão do Leste e o campeão do Oeste se enfrentam na grande final. Quem vencer 4 jogos ergue a lendária taça Stanley Cup, o troféu mais pesado e tradicional do esporte profissional.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6: QUIZ INTERATIVO -->
+        <section id="quiz" class="section-box">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-circle-question"></i> Quiz: Teste seus conhecimentos!</h2>
+                <p>Descubra se você já está pronto para assistir a um jogo da NHL</p>
+            </div>
+            <div class="quiz-container" id="quizContainer">
+                <div id="quizQuestionBox">
+                    <h3 id="questionTitle">Carregando pergunta...</h3>
+                    <div class="options-grid" id="quizOptions"></div>
+                </div>
+                <div id="quizResultBox" style="display: none;" class="text-center">
+                    <h3>Quiz Finalizado! 🎉</h3>
+                    <p id="quizScoreText" class="text-lg my-3"></p>
+                    <button class="btn btn-primary" onclick="restartQuiz()">Tentar Novamente</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="nhl-icon-shield">
+                    <i class="fa-solid fa-hockey-puck"></i>
+                    <span>NHL</span>
+                </div>
+                <p>Guia da Evy para a NHL — Feito com paixão pelo hóquei e design responsivo em azul claro e branco.</p>
+            </div>
+            <div class="footer-links">
+                <p>&copy; 2026 Guia da Evy. Todos os dados das franquias da NHL atualizados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script src="script.js"></script>
+</body>
+</html>
