@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guia da Evy para a NHL — Hóquei no Gelo para Iniciantes</title>
+  
+  <!-- Favicon em SVG inspirado no escudo da NHL -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 115'%3E%3Cpath d='M50 4 L92 18 L92 60 C92 86 72 103 50 111 C28 103 8 86 8 60 L8 18 Z' fill='%230284c7' stroke='%23ffffff' stroke-width='6'/%3E%3Cpath d='M50 11 L85 23 L85 59 C85 81 68 96 50 103 C32 96 15 81 15 59 L15 23 Z' fill='%230f172a'/%3E%3Ctext x='50' y='66' font-family='Arial, sans-serif' font-weight='900' font-size='26' fill='%2338bdf8' text-anchor='middle' transform='rotate(-14 50 58)'%3ENHL%3C/text%3E%3C/svg%3E" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Inter e Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            ice: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Textura sutil de gelo no fundo */
+    .ice-pattern {
+      background-color: #f8fafc;
+      background-image: 
+        radial-gradient(at 15% 15%, rgba(56, 189, 248, 0.14) 0px, transparent 50%),
+        radial-gradient(at 85% 25%, rgba(2, 132, 199, 0.10) 0px, transparent 50%),
+        radial-gradient(at 50% 80%, rgba(186, 230, 253, 0.25) 0px, transparent 55%);
+    }
+    .rink-shadow {
+      box-shadow: 0 20px 35px -12px rgba(2, 132, 199, 0.18), 0 0 0 1px rgba(186, 230, 253, 0.8);
+    }
+    .card-ice {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      border: 1px solid #bae6fd;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .card-ice:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px -10px rgba(2, 132, 199, 0.18);
+      border-color: #38bdf8;
+    }
+  </style>
+</head>
+<body class="ice-pattern text-slate-800 antialiased overflow-x-hidden selection:bg-ice-200 selection:text-ice-900">
+
+  <!-- ==================== CABEÇALHO / NAVBAR STICKY ==================== -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-ice-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        
+        <!-- Logo e Escudo inspirado na NHL -->
+        <a href="#inicio" class="flex items-center gap-3 group focus:outline-none">
+          <div class="w-11 h-12 sm:w-12 sm:h-13 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+            <svg viewBox="0 0 100 115" class="w-full h-full drop-shadow-sm" aria-label="Escudo Guia da Evy NHL">
+              <!-- Borda externa do escudo -->
+              <path d="M50 3 L94 18 L94 61 C94 88 73 105 50 113 C27 105 6 88 6 61 L6 18 Z" fill="#0284c7" />
+              <!-- Borda interna branca -->
+              <path d="M50 8 L89 21 L89 60 C89 84 70 100 50 107 C30 100 11 84 11 60 L11 21 Z" fill="#ffffff" />
+              <!-- Fundo escuro do escudo -->
+              <path d="M50 13 L84 25 L84 59 C84 80 67 95 50 101 C33 95 16 80 16 59 L16 25 Z" fill="#0c4a6e" />
+              <!-- Faixa diagonal -->
+              <path d="M18 68 L82 36 L82 54 L18 86 Z" fill="#0284c7" opacity="0.45" />
+              <!-- Disco (Puck) no topo -->
+              <ellipse cx="50" cy="27" rx="11" ry="4" fill="#38bdf8" />
+              <!-- Letreiro NHL -->
+              <text x="50" y="67" font-family="Montserrat, sans-serif" font-weight="900" font-size="25" fill="#ffffff" text-anchor="middle" letter-spacing="1" transform="rotate(-16 50 60)">NHL</text>
+              <!-- Taco de hóquei estilizado na base -->
+              <path d="M34 84 L62 76 L68 79" stroke="#7dd3fc" stroke-width="3.5" stroke-linecap="round" fill="none" />
+            </svg>
+          </div>
+          <div>
+            <span class="block font-display font-extrabold text-base sm:text-xl tracking-tight text-slate-900 leading-none">
+              Guia da <span class="text-ice-600">Evy</span>
+            </span>
+            <span class="block text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-ice-600 mt-0.5">
+              para a NHL
+            </span>
+          </div>
+        </a>
+
+        <!-- Navegação Desktop -->
+        <nav class="hidden lg:flex items-center gap-1 xl:gap-2">
+          <a href="#basico" class="px-3 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-ice-700 hover:bg-ice-50 transition">O Jogo & Rinque</a>
+          <a href="#linhas" class="px-3 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-ice-700 hover:bg-ice-50 transition">As Linhas</a>
+          <a href="#punicoes" class="px-3 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-ice-700 hover:bg-ice-50 transition">Punições & PP</a>
+          <a href="#times" class="px-3 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-ice-700 hover:bg-ice-50 transition">Os 32 Times</a>
+          <a href="#playoffs" class="px-3 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-ice-700 hover:bg-ice-50 transition">Playoffs</a>
+          <a href="#quiz" class="ml-2 px-4 py-2 rounded-xl text-sm font-bold bg-ice-600 text-white hover:bg-ice-700 shadow-sm transition">Quiz da Evy</a>
+        </nav>
+
+        <!-- Botão Menu Mobile -->
+        <button id="mobile-menu-btn" type="button" aria-label="Abrir menu" class="lg:hidden p-2.5 rounded-xl text-ice-700 bg-ice-50 hover:bg-ice-100 border border-ice-200 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path id="menu-icon-open" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            <path id="menu-icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu Mobile Expansível -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-ice-200 px-4 pt-2 pb-4 space-y-1 shadow-lg">
+      <a href="#basico" class="mobile-link block px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-ice-50 hover:text-ice-700">1. O Básico das Partidas & Rinque</a>
+      <a href="#linhas" class="mobile-link block px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-ice-50 hover:text-ice-700">2. As Linhas e Trocas Rápidas</a>
+      <a href="#punicoes" class="mobile-link block px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-ice-50 hover:text-ice-700">3. Punições, Power Play & PK</a>
+      <a href="#times" class="mobile-link block px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-ice-50 hover:text-ice-700">4. Os 32 Times da NHL</a>
+      <a href="#playoffs" class="mobile-link block px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-ice-50 hover:text-ice-700">5. Caminho para os Playoffs</a>
+      <a href="#quiz" class="mobile-link block px-4 py-3 rounded-xl text-sm font-bold text-center bg-ice-600 text-white mt-2">Testar Conhecimentos no Quiz</a>
+    </div>
+  </header>
+
+  <!-- ==================== 1. HERO SECTION ==================== -->
+  <section id="inicio" class="relative pt-10 pb-16 sm:pt-16 sm:pb-24 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-white via-ice-50 to-ice-100 rounded-3xl p-6 sm:p-12 lg:p-16 border border-ice-200 rink-shadow relative overflow-hidden">
+        
+        <!-- Linhas decorativas estilo rinque de hóquei -->
+        <div class="hidden md:block absolute top-0 bottom-0 right-1/4 w-1.5 bg-ice-300/40"></div>
+        <div class="hidden md:flex items-center justify-center absolute -right-16 -bottom-16 w-72 h-72 rounded-full border-4 border-ice-300/40 pointer-events-none">
+          <div class="w-4 h-4 rounded-full bg-ice-400/50"></div>
+        </div>
+
+        <div class="relative z-10 max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-ice-200 text-ice-700 text-xs sm:text-sm font-bold shadow-sm mb-6">
+            <span class="w-2.5 h-2.5 rounded-full bg-ice-500 animate-pulse"></span>
+            Seu primeiro passo no gelo!
+          </div>
+
+          <h1 class="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-slate-900 tracking-tight leading-tight">
+            Bem-vindo ao <span class="text-ice-600">Guia da Evy</span> para a NHL
+          </h1>
+
+          <p class="mt-5 text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl">
+            Olá! Se você sempre achou o hóquei no gelo fascinante, rápido e cheio de emoção, mas nunca entendeu por que o apito toca do nada ou como os times vão para os playoffs, este guia foi feito para você. Vamos dominar as regras da maior liga de hóquei do mundo juntos!
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3 sm:gap-4">
+            <a href="#basico" class="px-6 py-3.5 rounded-2xl bg-ice-600 hover:bg-ice-700 text-white font-bold text-sm sm:text-base shadow-md shadow-ice-600/20 transition transform hover:-translate-y-0.5">
+              Começar pelo Básico
+            </a>
+            <a href="#times" class="px-6 py-3.5 rounded-2xl bg-white hover:bg-ice-50 text-ice-700 border border-ice-300 font-bold text-sm sm:text-base transition">
+              Explorar os 32 Times
+            </a>
+          </div>
+
+          <!-- Resumo rápido em números -->
+          <div class="mt-10 pt-8 border-t border-ice-200/80 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div>
+              <p class="font-display font-extrabold text-2xl sm:text-3xl text-ice-600">3 × 20'</p>
+              <p class="text-xs sm:text-sm font-medium text-slate-500">Períodos de jogo</p>
+            </div>
+            <div>
+              <p class="font-display font-extrabold text-2xl sm:text-3xl text-ice-600">6 × 6</p>
+              <p class="text-xs sm:text-sm font-medium text-slate-500">Jogadores no gelo</p>
+            </div>
+            <div>
+              <p class="font-display font-extrabold text-2xl sm:text-3xl text-ice-600">32</p>
+              <p class="text-xs sm:text-sm font-medium text-slate-500">Franquias na liga</p>
+            </div>
+            <div>
+              <p class="font-display font-extrabold text-2xl sm:text-3xl text-ice-600">16</p>
+              <p class="text-xs sm:text-sm font-medium text-slate-500">Times nos Playoffs</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 2. O BÁSICO DAS PARTIDAS & RINQUE ==================== -->
+  <section id="basico" class="py-12 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-ice-600 bg-ice-100 px-3 py-1 rounded-full">Capítulo 01</span>
+        <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 mt-3">O Básico das Partidas</h2>
+        <p class="mt-3 text-slate-600 text-sm sm:text-base">
+          O hóquei no gelo é o esporte coletivo mais rápido do mundo. O objetivo é simples: usar o taco (<em>stick</em>) para colocar o disco de borracha vulcanizada (<em>puck</em>) dentro da rede adversária.
+        </p>
+      </div>
+
+      <!-- Cards: Duração, Jogadores e Pontuação -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <!-- Card Duração -->
+        <div class="card-ice rounded-2xl p-6">
+          <div class="w-12 h-12 rounded-xl bg-ice-100 text-ice-600 flex items-center justify-center mb-4 font-display font-black text-xl">
+            60'
+          </div>
+          <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Duração da Partida</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Cada jogo tem <strong>3 períodos de 20 minutos</strong> de relógio parado (o cronômetro para sempre que o árbitro apita). Entre os períodos há intervalos de 15 a 18 minutos para o caminhão <em>Zamboni</em> raspar e renovar o gelo.
+          </p>
+        </div>
+
+        <!-- Card Jogadores -->
+        <div class="card-ice rounded-2xl p-6">
+          <div class="w-12 h-12 rounded-xl bg-ice-100 text-ice-600 flex items-center justify-center mb-4 font-display font-black text-xl">
+            1 + 5
+          </div>
+          <h3 class="font-display font-bold text-lg text-slate-900 mb-2">6 Jogadores por Time</h3>
+          <ul class="text-sm text-slate-600 space-y-1.5">
+            <li>• <strong>1 Goleiro (Goalie):</strong> Protege o gol com equipamentos maiores.</li>
+            <li>• <strong>2 Defensores (Defensemen):</strong> Esquerdo (LD) e Direito (RD).</li>
+            <li>• <strong>3 Atacantes (Forwards):</strong> 1 Central (Center) que disputa os <em>faceoffs</em> e 2 Alas (Left Wing e Right Wing).</li>
+          </ul>
+        </div>
+
+        <!-- Card Pontuação -->
+        <div class="card-ice rounded-2xl p-6">
+          <div class="w-12 h-12 rounded-xl bg-ice-100 text-ice-600 flex items-center justify-center mb-4 font-display font-black text-xl">
+            2 PTS
+          </div>
+          <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Pontuação na Temporada</h3>
+          <p class="text-sm text-slate-600 leading-relaxed mb-2">
+            Não existe empate na NHL! Se empatar nos 60 min, joga-se 5 min de prorrogação (<strong>3 contra 3</strong>, morte súbita) e depois disputa de pênaltis (<em>Shootout</em>):
+          </p>
+          <div class="text-xs font-semibold space-y-1 bg-ice-50 p-3 rounded-xl border border-ice-200">
+            <div class="flex justify-between"><span>Vitória (Normal, OT ou Shootout):</span><span class="text-ice-700 font-bold">2 Pontos</span></div>
+            <div class="flex justify-between"><span>Derrota na Prorrogação/Shootout (OTL):</span><span class="text-sky-600 font-bold">1 Ponto</span></div>
+            <div class="flex justify-between"><span>Derrota no tempo normal:</span><span class="text-slate-500 font-bold">0 Pontos</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diagrama Interativo do Rinque (Rink) -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-ice-200 rink-shadow mb-12">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+          <div>
+            <h3 class="font-display font-extrabold text-xl sm:text-2xl text-slate-900">Mapa Interativo do Rinque (Rink)</h3>
+            <p class="text-sm text-slate-600">Clique nas zonas ou linhas do rinque abaixo para entender o que cada marcação significa!</p>
+          </div>
+          <div id="rink-info-badge" class="px-4 py-2 rounded-xl bg-ice-100 text-ice-800 text-xs sm:text-sm font-bold border border-ice-200">
+            Dica da Evy: Clique em qualquer elemento do gelo
+          </div>
+        </div>
+
+        <!-- SVG do Rinque -->
+        <div class="w-full overflow-hidden rounded-2xl border-2 border-ice-300 bg-sky-50/40 p-2 sm:p-4">
+          <svg viewBox="0 0 800 340" class="w-full h-auto select-none" role="img" aria-label="Diagrama interativo de um rinque de hóquei da NHL">
+            <!-- Fundo de Gelo -->
+            <rect x="10" y="10" width="780" height="320" rx="85" ry="85" fill="#ffffff" stroke="#0284c7" stroke-width="5" />
+
+            <!-- Zonas Clicáveis -->
+            <g class="cursor-pointer transition opacity-90 hover:opacity-100" onclick="selectRinkPart('defensiva')">
+              <path d="M95 12 L285 12 L285 328 L95 328 C45 328 12 290 12 245 L12 95 C12 50 45 12 95 12 Z" fill="#e0f2fe" fill-opacity="0.45" />
+              <text x="165" y="42" font-family="Montserrat, sans-serif" font-weight="800" font-size="13" fill="#0369a1" text-anchor="middle">ZONA DEFENSIVA</text>
+            </g>
+
+            <g class="cursor-pointer transition opacity-90 hover:opacity-100" onclick="selectRinkPart('neutra')">
+              <rect x="285" y="12" width="230" height="316" fill="#f0f9ff" fill-opacity="0.7" />
+              <text x="400" y="42" font-family="Montserrat, sans-serif" font-weight="800" font-size="13" fill="#0284c7" text-anchor="middle">ZONA NEUTRA</text>
+            </g>
+
+            <g class="cursor-pointer transition opacity-90 hover:opacity-100" onclick="selectRinkPart('ofensiva')">
+              <path d="M515 12 L705 12 C755 12 788 50 788 95 L788 245 C788 290 755 328 705 328 L515 328 Z" fill="#e0f2fe" fill-opacity="0.45" />
+              <text x="635" y="42" font-family="Montserrat, sans-serif" font-weight="800" font-size="13" fill="#0369a1" text-anchor="middle">ZONA OFENSIVA</text>
+            </g>
+
+            <!-- Linhas de Gol (Vermelhas finas nas pontas) -->
+            <line x1="72" y1="32" x2="72" y2="308" stroke="#ef4444" stroke-width="3" />
+            <line x1="728" y1="32" x2="728" y2="308" stroke="#ef4444" stroke-width="3" />
+
+            <!-- Crease (Área azul do goleiro) & Gols -->
+            <g class="cursor-pointer" onclick="selectRinkPart('crease')">
+              <!-- Crease Esquerda -->
+              <path d="M72 146 A24 24 0 0 1 72 194 Z" fill="#38bdf8" stroke="#ef4444" stroke-width="2" />
+              <rect x="56" y="154" width="16" height="32" rx="3" fill="#ffffff" stroke="#ef4444" stroke-width="2.5" />
+              <!-- Crease Direita -->
+              <path d="M728 146 A24 24 0 0 0 728 194 Z" fill="#38bdf8" stroke="#ef4444" stroke-width="2" />
+              <rect x="728" y="154" width="16" height="32" rx="3" fill="#ffffff" stroke="#ef4444" stroke-width="2.5" />
+            </g>
+
+            <!-- Linhas Azuis (Blue Lines) -->
+            <g class="cursor-pointer" onclick="selectRinkPart('linha-azul')">
+              <line x1="285" y1="12" x2="285" y2="328" stroke="#0284c7" stroke-width="8" />
+              <line x1="515" y1="12" x2="515" y2="328" stroke="#0284c7" stroke-width="8" />
+            </g>
+
+            <!-- Linha Vermelha Central (Center Red Line) -->
+            <g class="cursor-pointer" onclick="selectRinkPart('linha-vermelha')">
+              <line x1="400" y1="12" x2="400" y2="328" stroke="#ef4444" stroke-width="8" stroke-dasharray="14 6" />
+            </g>
+
+            <!-- Círculo Central de Faceoff -->
+            <g class="cursor-pointer" onclick="selectRinkPart('faceoff')">
+              <circle cx="400" cy="170" r="46" fill="none" stroke="#0284c7" stroke-width="3" />
+              <circle cx="400" cy="170" r="6" fill="#0284c7" />
+
+              <!-- Círculos de Faceoff das pontas -->
+              <circle cx="155" cy="95" r="38" fill="none" stroke="#ef4444" stroke-width="2.5" />
+              <circle cx="155" cy="95" r="5" fill="#ef4444" />
+
+              <circle cx="155" cy="245" r="38" fill="none" stroke="#ef4444" stroke-width="2.5" />
+              <circle cx="155" cy="245" r="5" fill="#ef4444" />
+
+              <circle cx="645" cy="95" r="38" fill="none" stroke="#ef4444" stroke-width="2.5" />
+              <circle cx="645" cy="95" r="5" fill="#ef4444" />
+
+              <circle cx="645" cy="245" r="38" fill="none" stroke="#ef4444" stroke-width="2.5" />
+              <circle cx="645" cy="245" r="5" fill="#ef4444" />
+
+              <!-- Pontos neutros -->
+              <circle cx="315" cy="95" r="5" fill="#ef4444" />
+              <circle cx="315" cy="245" r="5" fill="#ef4444" />
+              <circle cx="485" cy="95" r="5" fill="#ef4444" />
+              <circle cx="485" cy="245" r="5" fill="#ef4444" />
+            </g>
+          </svg>
+        </div>
+
+        <!-- Caixa de Explicação Dinâmica do Rinque -->
+        <div id="rink-explanation" class="mt-5 p-5 rounded-2xl bg-ice-50 border border-ice-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <h4 id="rink-title" class="font-display font-bold text-base sm:text-lg text-ice-900">Linhas Azuis (Blue Lines) e Linha Vermelha</h4>
+            <p id="rink-desc" class="text-sm text-slate-700 mt-1">
+              As duas <strong>Linhas Azuis</strong> dividem o gelo em três terços: Zona Defensiva, Zona Neutra e Zona Ofensiva. Elas determinam a regra de impedimento (<em>Offside</em>). Já a <strong>Linha Vermelha Central</strong> divide o rinque ao meio e é a referência para o <em>Icing</em>.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 flex-shrink-0">
+            <button onclick="selectRinkPart('linha-azul')" class="px-3 py-1.5 rounded-lg bg-white border border-ice-300 text-xs font-bold text-ice-700 hover:bg-ice-600 hover:text-white transition">Linhas Azuis</button>
+            <button onclick="selectRinkPart('linha-vermelha')" class="px-3 py-1.5 rounded-lg bg-white border border-ice-300 text-xs font-bold text-ice-700 hover:bg-ice-600 hover:text-white transition">Linha Vermelha</button>
+            <button onclick="selectRinkPart('faceoff')" class="px-3 py-1.5 rounded-lg bg-white border border-ice-300 text-xs font-bold text-ice-700 hover:bg-ice-600 hover:text-white transition">Círculos Faceoff</button>
+            <button onclick="selectRinkPart('crease')" class="px-3 py-1.5 rounded-lg bg-white border border-ice-300 text-xs font-bold text-ice-700 hover:bg-ice-600 hover:text-white transition">Gol & Crease</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Regras Essenciais: Offside e Icing -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border-l-4 border-l-ice-600 border border-ice-200 shadow-sm">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="px-3 py-1 rounded-lg bg-ice-100 text-ice-700 font-display font-extrabold text-xs uppercase">Regra Essencial #1</span>
+            <h3 class="font-display font-extrabold text-xl text-slate-900">Offside (Impedimento)</h3>
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Para evitar que um atacante fique "banheirando" perto do gol rival, <strong>o disco (puck) deve cruzar completamente a linha azul ofensiva antes de qualquer jogador do time atacante</strong>. Se um jogador entrar na zona de ataque antes do puck, o bandeirinha apita <em>Offside</em> e ocorre um <em>faceoff</em> na zona neutra.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border-l-4 border-l-red-500 border border-ice-200 shadow-sm">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="px-3 py-1 rounded-lg bg-red-50 text-red-600 font-display font-extrabold text-xs uppercase">Regra Essencial #2</span>
+            <h3 class="font-display font-extrabold text-xl text-slate-900">Icing (Arremesso Proibido)</h3>
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Se um jogador isola o disco <strong>de antes da linha vermelha central</strong> e ele atravessa toda a quadra cruzando a linha de gol adversária sem que ninguém toque nele (e um defensor chegar primeiro), marca-se <em>Icing</em>. O jogo volta para a defesa de quem isolou o disco, e esse time <strong>não pode trocar seus jogadores cansados</strong>!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3. AS LINHAS (LINES) ==================== -->
+  <section id="linhas" class="py-12 sm:py-20 bg-white/70 border-y border-ice-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-ice-600 bg-ice-100 px-3 py-1 rounded-full">Capítulo 02</span>
+        <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 mt-3">As Linhas e Trocas "On the Fly"</h2>
+        <p class="mt-3 text-slate-600 text-sm sm:text-base">
+          Patinar em velocidade máxima consome muita energia! Por isso, os jogadores ficam apenas <strong>45 a 60 segundos</strong> no gelo por turno (<em>shift</em>) e saltam pela mureta do banco com o jogo rolando — as famosas trocas <em>"on the fly"</em>.
+        </p>
+      </div>
+
+      <!-- Seletor Interativo de Linhas -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-ice-200 rink-shadow">
+        <div class="flex flex-wrap gap-2 sm:gap-3 justify-center mb-8" id="line-tabs">
+          <button onclick="selectLine('line1')" data-line="line1" class="line-tab active px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-ice-600 text-white shadow-sm transition">
+            1ª Linha (Top Line)
+          </button>
+          <button onclick="selectLine('line2')" data-line="line2" class="line-tab px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-ice-50 text-ice-700 border border-ice-200 hover:bg-ice-100 transition">
+            2ª Linha (Scoring)
+          </button>
+          <button onclick="selectLine('line3')" data-line="line3" class="line-tab px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-ice-50 text-ice-700 border border-ice-200 hover:bg-ice-100 transition">
+            3ª Linha (Checking)
+          </button>
+          <button onclick="selectLine('line4')" data-line="line4" class="line-tab px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-ice-50 text-ice-700 border border-ice-200 hover:bg-ice-100 transition">
+            4ª Linha (Energy)
+          </button>
+          <button onclick="selectLine('defense')" data-line="defense" class="line-tab px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-ice-50 text-ice-700 border border-ice-200 hover:bg-ice-100 transition">
+            3 Pares Defensivos + Goleiros
+          </button>
+        </div>
+
+        <!-- Conteúdo Dinâmico da Linha Selecionada -->
+        <div id="line-content" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ice-100 text-ice-700 text-xs font-extrabold" id="line-badge">
+              ATAQUE • ELITE & CRIATIVIDADE
+            </div>
+            <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900" id="line-title">
+              1ª Linha de Ataque (Top Line)
+            </h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed" id="line-desc">
+              É formada pelas maiores superestrelas do time (como Connor McDavid ou Auston Matthews). Eles jogam entre 19 e 22 minutos por partida, enfrentam os melhores defensores adversários e lideram o Power Play.
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2" id="line-stats">
+              <div class="bg-ice-50 p-3 rounded-xl border border-ice-200">
+                <span class="block text-[11px] font-bold text-ice-600 uppercase">Tempo de Gelo</span>
+                <span class="font-display font-extrabold text-base text-slate-900">19 - 22 min</span>
+              </div>
+              <div class="bg-ice-50 p-3 rounded-xl border border-ice-200">
+                <span class="block text-[11px] font-bold text-ice-600 uppercase">Foco Principal</span>
+                <span class="font-display font-extrabold text-base text-slate-900">Gols & Assistências</span>
+              </div>
+              <div class="bg-ice-50 p-3 rounded-xl border border-ice-200 col-span-2 sm:col-span-1">
+                <span class="block text-[11px] font-bold text-ice-600 uppercase">Composição</span>
+                <span class="font-display font-extrabold text-base text-slate-900">LW + C + RW</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visualização Tática da Formação -->
+          <div class="lg:col-span-5 bg-gradient-to-b from-ice-50 to-white rounded-2xl p-6 border border-ice-200">
+            <p class="text-xs font-extrabold text-center uppercase tracking-wider text-ice-700 mb-4" id="formation-header">
+              Esquema no Gelo (20 Jogadores Vestidos no Jogo)
+            </p>
+            <div id="formation-visual" class="space-y-3">
+              <!-- Preenchido via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. PUNIÇÕES, POWER PLAY & PENALTY KILL ==================== -->
+  <section id="punicoes" class="py-12 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-ice-600 bg-ice-100 px-3 py-1 rounded-full">Capítulo 03</span>
+        <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 mt-3">Punições, Power Play e Penalty Kill</h2>
+        <p class="mt-3 text-slate-600 text-sm sm:text-base">
+          No hóquei não existe cartão amarelo ou vermelho: o jogador infrator vai para a "caixinha de castigo" (<em>Penalty Box</em>) e deixa seu time com um jogador a menos no gelo!
+        </p>
+      </div>
+
+      <!-- Duração das Penalidades + Faltas Comuns -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
+        <!-- Durações -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="card-ice rounded-2xl p-5">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-display font-bold text-base text-slate-900">Minor Penalty (Penalidade Menor)</h3>
+              <span class="px-2.5 py-1 rounded-lg bg-ice-600 text-white font-display font-extrabold text-xs">2 MIN</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600">
+              A mais comum. O jogador sai por 2 minutos. <strong>Detalhe importante:</strong> se o time em vantagem marcar um gol, a punição acaba na hora e o jogador volta ao gelo!
+            </p>
+          </div>
+
+          <div class="card-ice rounded-2xl p-5">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-display font-bold text-base text-slate-900">Double Minor</h3>
+              <span class="px-2.5 py-1 rounded-lg bg-amber-500 text-white font-display font-extrabold text-xs">4 MIN</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600">
+              Acontece geralmente em <em>High-Sticking</em> (taco alto) que causa corte ou sangramento no rosto do adversário. São duas penalidades seguidas de 2 minutos.
+            </p>
+          </div>
+
+          <div class="card-ice rounded-2xl p-5">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-display font-bold text-base text-slate-900">Major Penalty (Penalidade Maior)</h3>
+              <span class="px-2.5 py-1 rounded-lg bg-red-600 text-white font-display font-extrabold text-xs">5 MIN</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600">
+              Aplicada em brigas (<em>Fighting</em>) ou faltas violentas. Os 5 minutos são cumpridos integralmente, mesmo que saiam vários gols durante o período.
+            </p>
+          </div>
+        </div>
+
+        <!-- Glossário de Faltas -->
+        <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-ice-200 shadow-sm">
+          <h3 class="font-display font-extrabold text-lg sm:text-xl text-slate-900 mb-4">Dicionário Rápido das Faltas na NHL</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-sm">
+            <div class="p-3.5 rounded-xl bg-ice-50/70 border border-ice-100">
+              <span class="font-bold text-ice-800 block">Tripping (Rasteira)</span>
+              <span class="text-xs text-slate-600">Derrubar o adversário usando o taco, perna ou joelho.</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-ice-50/70 border border-ice-100">
+              <span class="font-bold text-ice-800 block">Hooking (Gancho)</span>
+              <span class="text-xs text-slate-600">Usar a lâmina do taco para segurar ou puxar o corpo/braço do rival.</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-ice-50/70 border border-ice-100">
+              <span class="font-bold text-ice-800 block">Slashing (Tacada)</span>
+              <span class="text-xs text-slate-600">Bater com o taco no adversário ou quebrar o taco dele de propósito.</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-ice-50/70 border border-ice-100">
+              <span class="font-bold text-ice-800 block">High-Sticking (Taco Alto)</span>
+              <span class="text-xs text-slate-600">Atingir um oponente com o taco acima da altura dos ombros.</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-ice-50/70 border border-ice-100">
+              <span class="font-bold text-ice-800 block">Boarding (Carga na Borda)</span>
+              <span class="text-xs text-slate-600">Empurrar violentamente um jogador indefeso contra a parede do rinque.</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-ice-50/70 border border-ice-100">
+              <span class="font-bold text-ice-800 block">Interference & Fighting</span>
+              <span class="text-xs text-slate-600">Bloquear quem está sem o puck (Interference) ou tirar as luvas para lutar (Fighting - 5 min).</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini-Simulador Interativo de Power Play / Penalty Kill -->
+      <div class="bg-gradient-to-br from-ice-900 via-slate-900 to-ice-950 text-white rounded-3xl p-6 sm:p-10 shadow-xl">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
+          <div>
+            <span class="px-3 py-1 rounded-full bg-ice-500/20 text-ice-300 border border-ice-400/30 text-xs font-bold uppercase tracking-wider">
+              Simulador Interativo da Evy
+            </span>
+            <h3 class="font-display font-extrabold text-2xl sm:text-3xl mt-2">
+              Power Play (PP) vs. Penalty Kill (PK)
+            </h3>
+            <p class="text-ice-200 text-sm mt-1 max-w-2xl">
+              Escolha um cenário abaixo para ver como fica a vantagem numérica no gelo (lembrando que nunca pode haver menos que 3 jogadores de linha por time).
+            </p>
+          </div>
+
+          <!-- Botões de Cenário -->
+          <div class="flex flex-wrap gap-2">
+            <button onclick="setPPScenario('5v5')" id="pp-btn-5v5" class="pp-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white/10 hover:bg-white/20 text-white border border-white/20 transition">
+              Normal (5v5)
+            </button>
+            <button onclick="setPPScenario('5v4')" id="pp-btn-5v4" class="pp-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-ice-500 text-white shadow-lg shadow-ice-500/30 transition">
+              Power Play (5v4)
+            </button>
+            <button onclick="setPPScenario('5v3')" id="pp-btn-5v3" class="pp-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white/10 hover:bg-white/20 text-white border border-white/20 transition">
+              Dupla Vantagem (5v3)
+            </button>
+            <button onclick="setPPScenario('4v4')" id="pp-btn-4v4" class="pp-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white/10 hover:bg-white/20 text-white border border-white/20 transition">
+              Coincidente (4v4)
+            </button>
+          </div>
+        </div>
+
+        <!-- Visualização do Gelo e Penalty Box -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6">
+          <!-- Time Azul (Vantagem / Power Play) -->
+          <div class="text-center p-4 rounded-xl bg-ice-500/15 border border-ice-400/30">
+            <span class="text-xs font-bold uppercase tracking-wider text-ice-300" id="pp-team-a-role">Time em Power Play (PP)</span>
+            <div class="font-display font-black text-4xl sm:text-5xl text-white my-2" id="pp-team-a-count">5 + 1</div>
+            <p class="text-xs text-ice-200" id="pp-team-a-desc">5 jogadores de linha + 1 goleiro</p>
+            <div class="flex justify-center gap-2 mt-4" id="pp-team-a-dots"></div>
+          </div>
+
+          <!-- Explicação Central -->
+          <div class="text-center space-y-2">
+            <div class="inline-block px-4 py-1.5 rounded-full bg-amber-400 text-slate-950 font-display font-black text-sm" id="pp-status-badge">
+              VANTAGEM NUMÉRICA: 5 CONTRA 4
+            </div>
+            <p class="text-xs sm:text-sm text-slate-200 leading-relaxed" id="pp-explanation">
+              O time em <strong>Power Play</strong> cerca a zona ofensiva trocando passes rápidos para abrir espaço e finalizar. Já o time em <strong>Penalty Kill (PK)</strong> pode isolar o disco de qualquer lugar do rinque sem sofrer <em>Icing</em>, e se marcar um gol com um a menos, faz o famoso <strong>Shorthanded Goal (SHG)</strong>!
+            </p>
+          </div>
+
+          <!-- Time Branco (Desvantagem / Penalty Kill) -->
+          <div class="text-center p-4 rounded-xl bg-white/5 border border-white/15">
+            <span class="text-xs font-bold uppercase tracking-wider text-rose-300" id="pp-team-b-role">Time em Penalty Kill (PK)</span>
+            <div class="font-display font-black text-4xl sm:text-5xl text-white my-2" id="pp-team-b-count">4 + 1</div>
+            <p class="text-xs text-slate-300" id="pp-team-b-desc">4 jogadores de linha + 1 goleiro (1 na Penalty Box)</p>
+            <div class="flex justify-center gap-2 mt-4" id="pp-team-b-dots"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 5. OS 32 TIMES DA NHL ==================== -->
+  <section id="times" class="py-12 sm:py-20 bg-white/80 border-y border-ice-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-ice-600 bg-ice-100 px-3 py-1 rounded-full">Capítulo 04</span>
+        <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 mt-3">Os 32 Times Reais da NHL</h2>
+        <p class="mt-3 text-slate-600 text-sm sm:text-base">
+          A NHL possui 32 franquias (25 nos Estados Unidos e 7 no Canadá), divididas em <strong>2 Conferências</strong> (Leste e Oeste) e <strong>4 Divisões</strong> de 8 times cada — incluindo a franquia de Utah na Divisão Central!
+        </p>
+      </div>
+
+      <!-- Controles de Filtro e Busca -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 bg-ice-50 p-4 rounded-2xl border border-ice-200">
+        <!-- Botões de Filtro -->
+        <div class="flex flex-wrap justify-center gap-2" id="division-filters">
+          <button onclick="filterTeams('all')" data-filter="all" class="team-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-ice-600 text-white shadow-sm transition">
+            Todos (32)
+          </button>
+          <button onclick="filterTeams('Atlântico')" data-filter="Atlântico" class="team-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-700 border border-ice-200 hover:bg-ice-100 transition">
+            Leste: Atlântico (8)
+          </button>
+          <button onclick="filterTeams('Metropolitana')" data-filter="Metropolitana" class="team-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-700 border border-ice-200 hover:bg-ice-100 transition">
+            Leste: Metropolitana (8)
+          </button>
+          <button onclick="filterTeams('Central')" data-filter="Central" class="team-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-700 border border-ice-200 hover:bg-ice-100 transition">
+            Oeste: Central (8)
+          </button>
+          <button onclick="filterTeams('Pacífico')" data-filter="Pacífico" class="team-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-700 border border-ice-200 hover:bg-ice-100 transition">
+            Oeste: Pacífico (8)
+          </button>
+        </div>
+
+        <!-- Campo de Busca -->
+        <div class="w-full md:w-64 relative">
+          <input
+            type="text"
+            id="team-search"
+            oninput="renderTeams()"
+            placeholder="Buscar cidade ou time..."
+            class="w-full pl-9 pr-4 py-2 rounded-xl text-sm bg-white border border-ice-300 focus:outline-none focus:ring-2 focus:ring-ice-500 text-slate-800"
+          />
+          <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Grade de Times -->
+      <div id="teams-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Preenchido dinamicamente via JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 6. CAMINHO PARA OS PLAYOFFS E STANLEY CUP ==================== -->
+  <section id="playoffs" class="py-12 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-ice-600 bg-ice-100 px-3 py-1 rounded-full">Capítulo 05</span>
+        <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 mt-3">Caminho para os Playoffs e a Stanley Cup</h2>
+        <p class="mt-3 text-slate-600 text-sm sm:text-base">
+          De outubro a abril, cada equipe disputa <strong>82 jogos na Temporada Regular</strong>. Apenas metade da liga (16 times) avança para a pós-temporada em busca do troféu mais icônico do esporte: a <strong>Stanley Cup</strong>.
+        </p>
+      </div>
+
+      <!-- Como funciona a classificação (16 times) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="card-ice rounded-2xl p-6">
+          <span class="inline-block px-3 py-1 rounded-lg bg-ice-600 text-white font-display font-extrabold text-xs mb-3">12 VAGAS DIRETAS</span>
+          <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Top 3 de Cada Divisão</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Os <strong>3 primeiros colocados</strong> de cada uma das 4 divisões (Atlântico, Metropolitana, Central e Pacífico) garantem vaga direta nos playoffs (3 × 4 = 12 times).
+          </p>
+        </div>
+
+        <div class="card-ice rounded-2xl p-6">
+          <span class="inline-block px-3 py-1 rounded-lg bg-sky-500 text-white font-display font-extrabold text-xs mb-3">4 VAGAS WILD CARD</span>
+          <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Repescagem por Conferência</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            As 2 vagas restantes do Leste e as 2 do Oeste vão para os <strong>2 times com maior pontuação</strong> em cada conferência entre aqueles que não ficaram no Top 3 de suas divisões.
+          </p>
+        </div>
+
+        <div class="card-ice rounded-2xl p-6">
+          <span class="inline-block px-3 py-1 rounded-lg bg-slate-900 text-white font-display font-extrabold text-xs mb-3">MORTE SÚBITA</span>
+          <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Séries Melhor de 7</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Quem vencer <strong>4 jogos</strong> avança. Nos playoffs <strong>não há shootout nem 3v3</strong>: se empatar, jogam-se períodos completos de 20 min (5 contra 5) em morte súbita até sair o gol da vitória!
+          </p>
+        </div>
+      </div>
+
+      <!-- Esquema Visual (Bracket) dos Playoffs -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-ice-200 rink-shadow">
+        <h3 class="font-display font-extrabold text-xl text-slate-900 text-center mb-6">Estrutura do Chaveamento (Bracket) da NHL</h3>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-7 gap-4 items-center text-center">
+          <!-- Conferência Oeste -->
+          <div class="lg:col-span-2 space-y-3 bg-ice-50 p-4 rounded-2xl border border-ice-200">
+            <span class="block text-xs font-extrabold uppercase text-ice-700">Conferência Oeste (8 Times)</span>
+            <div class="bg-white p-3 rounded-xl border border-ice-200 text-xs font-semibold text-slate-700">
+              1º Central vs. Wild Card 2<br/>
+              2º Central vs. 3º Central
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-ice-200 text-xs font-semibold text-slate-700">
+              1º Pacífico vs. Wild Card 1<br/>
+              2º Pacífico vs. 3º Pacífico
+            </div>
+            <div class="text-[11px] font-bold text-ice-600">↓ 2ª Rodada → Final do Oeste</div>
+          </div>
+
+          <!-- Seta Esquerda -->
+          <div class="hidden lg:flex justify-center text-ice-500 font-display font-black text-2xl">→</div>
+
+          <!-- Centro: Stanley Cup Final -->
+          <div class="lg:col-span-1 bg-gradient-to-b from-ice-600 to-ice-800 text-white p-5 rounded-2xl shadow-lg">
+            <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-white/20 flex items-center justify-center">
+              <!-- Ícone Taça -->
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18 2H6v2H2v5c0 2.76 2.24 5 5 5h.34C8.16 15.65 9.91 16.82 12 17v3H8v2h8v-2h-4v-3c2.09-.18 3.84-1.35 4.66-3H17c2.76 0 5-2.24 5-5V4h-4V2zM4 9V6h2v6c-1.1 0-2-.9-2-2zm16 0c0 1.1-.9 2-2 2V6h2v3z"/>
+              </svg>
+            </div>
+            <span class="block font-display font-black text-sm uppercase tracking-wide">Stanley Cup Final</span>
+            <span class="block text-[11px] text-ice-100 mt-1">Campeão do Oeste vs. Campeão do Leste (Melhor de 7)</span>
+          </div>
+
+          <!-- Seta Direita -->
+          <div class="hidden lg:flex justify-center text-ice-500 font-display font-black text-2xl">←</div>
+
+          <!-- Conferência Leste -->
+          <div class="lg:col-span-2 space-y-3 bg-ice-50 p-4 rounded-2xl border border-ice-200">
+            <span class="block text-xs font-extrabold uppercase text-ice-700">Conferência Leste (8 Times)</span>
+            <div class="bg-white p-3 rounded-xl border border-ice-200 text-xs font-semibold text-slate-700">
+              1º Atlântico vs. Wild Card 2<br/>
+              2º Atlântico vs. 3º Atlântico
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-ice-200 text-xs font-semibold text-slate-700">
+              1º Metropolitana vs. Wild Card 1<br/>
+              2º Metropolitana vs. 3º Metropolitana
+            </div>
+            <div class="text-[11px] font-bold text-ice-600">↓ 2ª Rodada → Final do Leste</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 7. MINI QUIZ DA EVY ==================== -->
+  <section id="quiz" class="py-12 sm:py-20 bg-ice-100/70 border-t border-ice-200">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl p-6 sm:p-10 border border-ice-200 rink-shadow">
+        <div class="text-center mb-8">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-ice-600 bg-ice-100 px-3 py-1 rounded-full">Desafio Final</span>
+          <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 mt-3">Mini Quiz da Evy</h2>
+          <p class="text-sm text-slate-600 mt-1">Teste o que você acabou de aprender em 4 perguntas rápidas!</p>
+        </div>
+
+        <div id="quiz-container" class="space-y-6">
+          <!-- Renderizado via JavaScript -->
+        </div>
+
+        <div id="quiz-result" class="hidden mt-8 p-6 rounded-2xl bg-ice-50 border border-ice-300 text-center">
+          <p class="font-display font-black text-2xl text-ice-800" id="quiz-score-text"></p>
+          <p class="text-sm text-slate-600 mt-1" id="quiz-feedback-text"></p>
+          <button onclick="resetQuiz()" class="mt-4 px-5 py-2.5 rounded-xl bg-ice-600 hover:bg-ice-700 text-white font-bold text-sm transition">
+            Refazer o Quiz
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== RODAPÉ ==================== -->
+  <footer class="bg-slate-900 text-slate-300 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-9">
+          <svg viewBox="0 0 100 115" class="w-full h-full">
+            <path d="M50 3 L94 18 L94 61 C94 88 73 105 50 113 C27 105 6 88 6 61 L6 18 Z" fill="#0284c7" />
+            <path d="M50 13 L84 25 L84 59 C84 80 67 95 50 101 C33 95 16 80 16 59 L16 25 Z" fill="#0f172a" />
+            <text x="50" y="67" font-family="Montserrat, sans-serif" font-weight="900" font-size="25" fill="#38bdf8" text-anchor="middle" transform="rotate(-16 50 60)">NHL</text>
+          </svg>
+        </div>
+        <div>
+          <p class="font-display font-bold text-white text-sm">Guia da Evy para a NHL</p>
+          <p class="text-xs text-slate-400">Feito com carinho para novos fãs de hóquei no gelo.</p>
+        </div>
+      </div>
+      <p class="text-xs text-slate-400 text-center sm:text-right">
+        Dados baseados nas regras oficiais e nas 32 franquias da National Hockey League (NHL).
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS INTERATIVOS ==================== -->
+  <script>
+    // 1. MENU MOBILE
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      });
+    });
+
+    // 2. INTERATIVIDADE DO RINQUE
+    const rinkParts = {
+      'linha-azul': {
+        badge: 'ZONA DE ATAQUE & OFFSIDE',
+        title: 'As Duas Linhas Azuis (Blue Lines)',
+        desc: 'Dividem o rinque em Zona Defensiva, Zona Neutra e Zona Ofensiva. O disco (puck) precisa cruzar completamente a linha azul de ataque antes de qualquer jogador atacante — caso contrário, marca-se Offside (impedimento).'
+      },
+      'linha-vermelha': {
+        badge: 'CENTRO DO RINQUE & ICING',
+        title: 'Linha Vermelha Central (Center Red Line)',
+        desc: 'Divide o gelo exatamente ao meio. É o limite usado para julgar o Icing (arremesso proibido): se um jogador isolar o puck antes dessa linha até o fundo do campo adversário sem desvios, o jogo para.'
+      },
+      'faceoff': {
+        badge: 'REINÍCIO DE JOGO',
+        title: 'Círculos e Pontos de Faceoff',
+        desc: 'Existem 9 pontos de faceoff no rinque. O jogo começa no círculo azul central e recomeça nos círculos vermelhos (ou neutros) sempre que há um gol, penalidade, offside ou icing.'
+      },
+      'crease': {
+        badge: 'ÁREA PROTEGIDA',
+        title: 'Gol e Crease (Área Azul do Goleiro)',
+        desc: 'O semicírculo azul claro em frente ao gol (1,83m de largura por 1,22m de altura) é o espaço reservado ao goleiro. Atacantes não podem atrapalhar ou empurrar o goleiro dentro da crease.'
+      },
+      'defensiva': {
+        badge: 'TERÇO DE DEFESA',
+        title: 'Zona Defensiva',
+        desc: 'É o terço do rinque onde fica o gol que o time está defendendo. Aqui os defensores e o Central trabalham juntos para bloquear chutes e sair jogando com passes limpos.'
+      },
+      'neutra': {
+        badge: 'TRANSIÇÃO RÁPIDA',
+        title: 'Zona Neutra',
+        desc: 'Fica entre as duas linhas azuis. É a região de transição em alta velocidade onde os times constroem jogadas para cruzar a linha azul adversária sem ficar em impedimento.'
+      },
+      'ofensiva': {
+        badge: 'TERÇO DE ATAQUE',
+        title: 'Zona Ofensiva',
+        desc: 'Uma vez que o puck cruza a linha azul ofensiva, o time pode circular o disco livremente por toda a zona (inclusive atrás do gol!) até o disco sair novamente pela linha azul.'
+      }
+    };
+
+    function selectRinkPart(key) {
+      const part = rinkParts[key];
+      if (!part) return;
+      document.getElementById('rink-info-badge').textContent = part.badge;
+      document.getElementById('rink-title').textContent = part.title;
+      document.getElementById('rink-desc').textContent = part.desc;
+    }
+
+    // 3. INTERATIVIDADE DAS LINHAS (LINES)
+    const linesData = {
+      line1: {
+        badge: 'ATAQUE • ELITE & PONTUADORES',
+        title: '1ª Linha de Ataque (Top Line)',
+        desc: 'Reúne os jogadores mais talentosos e criativos da franquia. Eles jogam cerca de 20 minutos por partida, enfrentam as melhores defesas rivais e são o motor do Power Play.',
+        iceTime: '19 - 22 min',
+        focus: 'Gols & Criação',
+        comp: 'LW + C + RW',
+        highlightIndex: 0
+      },
+      line2: {
+        badge: 'ATAQUE • SEGUNDA FORÇA OFENSIVA',
+        title: '2ª Linha de Ataque (Scoring Line)',
+        desc: 'Também altamente ofensiva, tem como missão pontuar quando a 1ª linha está descansando no banco e aproveitar confrontos contra defensores menos experientes do adversário.',
+        iceTime: '16 - 18 min',
+        focus: 'Ataque Secundário',
+        comp: 'LW + C + RW',
+        highlightIndex: 1
+      },
+      line3: {
+        badge: 'ATAQUE • MARCAÇÃO & EQUILÍBRIO',
+        title: '3ª Linha de Ataque (Checking Line)',
+        desc: 'Especialistas em jogo de dois lados (two-way forwards). Eles marcam de perto as estrelas adversárias, vencem disputas na parede (boards) e jogam no Penalty Kill.',
+        iceTime: '12 - 15 min',
+        focus: 'Marcação & Posse',
+        comp: 'LW + C + RW',
+        highlightIndex: 2
+      },
+      line4: {
+        badge: 'ATAQUE • ENERGIA & INTENSIDADE',
+        title: '4ª Linha de Ataque (Energy / Grinder Line)',
+        desc: 'Jogam turnos curtos e explosivos com muito contato físico (hits). O objetivo é cansar a defesa rival, manter o disco na zona ofensiva e dar fôlego para as linhas principais.',
+        iceTime: '8 - 11 min',
+        focus: 'Físico & Energia',
+        comp: 'LW + C + RW',
+        highlightIndex: 3
+      },
+      defense: {
+        badge: 'DEFESA & GOLEIROS • PROTEÇÃO DO GELO',
+        title: '3 Pares Defensivos + 2 Goleiros',
+        desc: 'Diferente do ataque (trios), os defensores atuam em duplas (Esquerdo e Direito). O 1º Par joga até 25 minutos por jogo! No gol, cada time veste 1 Goleiro Titular e 1 Reserva.',
+        iceTime: '14 - 25 min',
+        focus: 'Bloqueio & Saída',
+        comp: '3 Pares + 2 Goalies',
+        highlightIndex: 4
+      }
+    };
+
+    function renderFormationVisual(activeIdx) {
+      const items = [
+        { label: '1ª Linha Atacantes', sub: 'LW • C • RW (Estrelas)', idx: 0 },
+        { label: '2ª Linha Atacantes', sub: 'LW • C • RW (Pontuadores)', idx: 1 },
+        { label: '3ª Linha Atacantes', sub: 'LW • C • RW (Marcação)', idx: 2 },
+        { label: '4ª Linha Atacantes', sub: 'LW • C • RW (Energia)', idx: 3 },
+        { label: '3 Pares Defensivos + 2 Goleiros', sub: '6 Defensores + 2 Goleiros', idx: 4 }
+      ];
+
+      const container = document.getElementById('formation-visual');
+      container.innerHTML = items.map(item => {
+        const isSelected = item.idx === activeIdx;
+        return `
+          <div class="flex items-center justify-between px-4 py-2.5 rounded-xl border transition ${
+            isSelected
+              ? 'bg-ice-600 text-white border-ice-600 shadow-sm'
+              : 'bg-white text-slate-700 border-ice-200'
+          }">
+            <span class="font-bold text-xs sm:text-sm">${item.label}</span>
+            <span class="text-[11px] font-semibold ${isSelected ? 'text-ice-100' : 'text-slate-400'}">${item.sub}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectLine(key) {
+      const data = linesData[key];
+      if (!data) return;
+
+      document.querySelectorAll('.line-tab').forEach(btn => {
+        if (btn.dataset.line === key) {
+          btn.className = 'line-tab active px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-ice-600 text-white shadow-sm transition';
+        } else {
+          btn.className = 'line-tab px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-ice-50 text-ice-700 border border-ice-200 hover:bg-ice-100 transition';
+        }
+      });
+
+      document.getElementById('line-badge').textContent = data.badge;
+      document.getElementById('line-title').textContent = data.title;
+      document.getElementById('line-desc').textContent = data.desc;
+      document.getElementById('line-stats').innerHTML = `
+        <div class="bg-ice-50 p-3 rounded-xl border border-ice-200">
+          <span class="block text-[11px] font-bold text-ice-600 uppercase">Tempo de Gelo</span>
+          <span class="font-display font-extrabold text-base text-slate-900">${data.iceTime}</span>
+        </div>
+        <div class="bg-ice-50 p-3 rounded-xl border border-ice-200">
+          <span class="block text-[11px] font-bold text-ice-600 uppercase">Foco Principal</span>
+          <span class="font-display font-extrabold text-base text-slate-900">${data.focus}</span>
+        </div>
+        <div class="bg-ice-50 p-3 rounded-xl border border-ice-200 col-span-2 sm:col-span-1">
+          <span class="block text-[11px] font-bold text-ice-600 uppercase">Composição</span>
+          <span class="font-display font-extrabold text-base text-slate-900">${data.comp}</span>
+        </div>
+      `;
+      renderFormationVisual(data.highlightIndex);
+    }
+
+    // 4. SIMULADOR INTERATIVO DE POWER PLAY
+    const ppScenarios = {
+      '5v5': {
+        badge: 'FORÇA IGUAL (EVEN STRENGTH)',
+        roleA: 'Time A (Completo)',
+        countA: '5 + 1',
+        descA: '5 jogadores de linha + 1 goleiro',
+        skatersA: 5,
+        roleB: 'Time B (Completo)',
+        countB: '5 + 1',
+        descB: '5 jogadores de linha + 1 goleiro',
+        skatersB: 5,
+        exp: 'Ambos os times estão completos no gelo (5 jogadores de linha + 1 goleiro de cada lado). Aplicam-se todas as regras normais, incluindo Icing e Offside.'
+      },
+      '5v4': {
+        badge: 'VANTAGEM NUMÉRICA: 5 CONTRA 4',
+        roleA: 'Time em Power Play (PP)',
+        countA: '5 + 1',
+        descA: '5 jogadores de linha + 1 goleiro',
+        skatersA: 5,
+        roleB: 'Time em Penalty Kill (PK)',
+        countB: '4 + 1',
+        descB: '4 jogadores de linha + 1 goleiro (1 punido)',
+        skatersB: 4,
+        exp: 'O time em Power Play cerca a zona ofensiva buscando o gol. Já o time em Penalty Kill (PK) pode isolar o disco sem sofrer Icing e tenta marcar um Shorthanded Goal (gol com um a menos)!'
+      },
+      '5v3': {
+        badge: 'DUPLA VANTAGEM: 5 CONTRA 3',
+        roleA: 'Power Play Duplo (5v3)',
+        countA: '5 + 1',
+        descA: '5 jogadores de linha + 1 goleiro',
+        skatersA: 5,
+        roleB: 'Penalty Kill Extremo (3)',
+        countB: '3 + 1',
+        descB: '3 jogadores de linha + 1 goleiro (2 punidos)',
+        skatersB: 3,
+        exp: 'Acontece quando dois jogadores do mesmo time são punidos simultaneamente. Com apenas 3 defensores em triângulo protegendo o gol, a chance de gol do ataque é altíssima!'
+      },
+      '4v4': {
+        badge: 'PENALIDADES COINCIDENTES: 4 CONTRA 4',
+        roleA: 'Time A (1 Punido)',
+        countA: '4 + 1',
+        descA: '4 jogadores de linha + 1 goleiro',
+        skatersA: 4,
+        roleB: 'Time B (1 Punido)',
+        countB: '4 + 1',
+        descB: '4 jogadores de linha + 1 goleiro',
+        skatersB: 4,
+        exp: 'Quando um jogador de cada time comete falta ao mesmo tempo, ambos vão para a Penalty Box e o jogo segue 4 contra 4, abrindo muito espaço livre no gelo!'
+      }
+    };
+
+    function renderDots(count, colorClass) {
+      let html = '';
+      for (let i = 0; i < 5; i++) {
+        if (i < count) {
+          html += `<span class="w-4 h-4 rounded-full ${colorClass} inline-block shadow"></span>`;
+        } else {
+          html += `<span class="w-4 h-4 rounded-full border border-dashed border-slate-500 inline-block opacity-40" title="Na Penalty Box"></span>`;
+        }
+      }
+      return html;
+    }
+
+    function setPPScenario(key) {
+      const s = ppScenarios[key];
+      if (!s) return;
+
+      document.querySelectorAll('.pp-btn').forEach(btn => {
+        if (btn.id === `pp-btn-${key}`) {
+          btn.className = 'pp-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-ice-500 text-white shadow-lg shadow-ice-500/30 transition';
+        } else {
+          btn.className = 'pp-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white/10 hover:bg-white/20 text-white border border-white/20 transition';
+        }
+      });
+
+      document.getElementById('pp-status-badge').textContent = s.badge;
+      document.getElementById('pp-team-a-role').textContent = s.roleA;
+      document.getElementById('pp-team-a-count').textContent = s.countA;
+      document.getElementById('pp-team-a-desc').textContent = s.descA;
+      document.getElementById('pp-team-a-dots').innerHTML = renderDots(s.skatersA, 'bg-sky-400');
+
+      document.getElementById('pp-team-b-role').textContent = s.roleB;
+      document.getElementById('pp-team-b-count').textContent = s.countB;
+      document.getElementById('pp-team-b-desc').textContent = s.descB;
+      document.getElementById('pp-team-b-dots').innerHTML = renderDots(s.skatersB, 'bg-rose-400');
+
+      document.getElementById('pp-explanation').textContent = s.exp;
+    }
+
+    // 5. DADOS REAIS DAS 32 FRANQUIAS DA NHL
+    const nhlTeams = [
+      // Conferência Leste - Divisão Atlântico
+      { name: 'Boston Bruins', city: 'Boston, MA', conf: 'Leste', div: 'Atlântico', abbr: 'BOS', c1: '#FFB81C', c2: '#000000' },
+      { name: 'Buffalo Sabres', city: 'Buffalo, NY', conf: 'Leste', div: 'Atlântico', abbr: 'BUF', c1: '#003087', c2: '#FFB81C' },
+      { name: 'Detroit Red Wings', city: 'Detroit, MI', conf: 'Leste', div: 'Atlântico', abbr: 'DET', c1: '#CE1126', c2: '#FFFFFF' },
+      { name: 'Florida Panthers', city: 'Sunrise, FL', conf: 'Leste', div: 'Atlântico', abbr: 'FLA', c1: '#C8102E', c2: '#041E42' },
+      { name: 'Montreal Canadiens', city: 'Montréal, QC', conf: 'Leste', div: 'Atlântico', abbr: 'MTL', c1: '#AF1E2D', c2: '#192168' },
+      { name: 'Ottawa Senators', city: 'Ottawa, ON', conf: 'Leste', div: 'Atlântico', abbr: 'OTT', c1: '#DA1A32', c2: '#000000' },
+      { name: 'Tampa Bay Lightning', city: 'Tampa, FL', conf: 'Leste', div: 'Atlântico', abbr: 'TBL', c1: '#002868', c2: '#FFFFFF' },
+      { name: 'Toronto Maple Leafs', city: 'Toronto, ON', conf: 'Leste', div: 'Atlântico', abbr: 'TOR', c1: '#00205B', c2: '#FFFFFF' },
+
+      // Conferência Leste - Divisão Metropolitana
+      { name: 'Carolina Hurricanes', city: 'Raleigh, NC', conf: 'Leste', div: 'Metropolitana', abbr: 'CAR', c1: '#CE1126', c2: '#000000' },
+      { name: 'Columbus Blue Jackets', city: 'Columbus, OH', conf: 'Leste', div: 'Metropolitana', abbr: 'CBJ', c1: '#002654', c2: '#CE1126' },
+      { name: 'New Jersey Devils', city: 'Newark, NJ', conf: 'Leste', div: 'Metropolitana', abbr: 'NJD', c1: '#CE1126', c2: '#000000' },
+      { name: 'New York Islanders', city: 'Elmont, NY', conf: 'Leste', div: 'Metropolitana', abbr: 'NYI', c1: '#00539B', c2: '#F47D30' },
+      { name: 'New York Rangers', city: 'New York, NY', conf: 'Leste', div: 'Metropolitana', abbr: 'NYR', c1: '#0038A8', c2: '#CE1126' },
+      { name: 'Philadelphia Flyers', city: 'Philadelphia, PA', conf: 'Leste', div: 'Metropolitana', abbr: 'PHI', c1: '#F74902', c2: '#000000' },
+      { name: 'Pittsburgh Penguins', city: 'Pittsburgh, PA', conf: 'Leste', div: 'Metropolitana', abbr: 'PIT', c1: '#FCB514', c2: '#000000' },
+      { name: 'Washington Capitals', city: 'Washington, D.C.', conf: 'Leste', div: 'Metropolitana', abbr: 'WSH', c1: '#C8102E', c2: '#041E42' },
+
+      // Conferência Oeste - Divisão Central
+      { name: 'Chicago Blackhawks', city: 'Chicago, IL', conf: 'Oeste', div: 'Central', abbr: 'CHI', c1: '#CF0A2C', c2: '#000000' },
+      { name: 'Colorado Avalanche', city: 'Denver, CO', conf: 'Oeste', div: 'Central', abbr: 'COL', c1: '#6F263D', c2: '#236192' },
+      { name: 'Dallas Stars', city: 'Dallas, TX', conf: 'Oeste', div: 'Central', abbr: 'DAL', c1: '#006847', c2: '#8F8F8C' },
+      { name: 'Minnesota Wild', city: 'Saint Paul, MN', conf: 'Oeste', div: 'Central', abbr: 'MIN', c1: '#154734', c2: '#A6192E' },
+      { name: 'Nashville Predators', city: 'Nashville, TN', conf: 'Oeste', div: 'Central', abbr: 'NSH', c1: '#FFB81C', c2: '#041E42' },
+      { name: 'St. Louis Blues', city: 'St. Louis, MO', conf: 'Oeste', div: 'Central', abbr: 'STL', c1: '#002F87', c2: '#FCB514' },
+      { name: 'Utah Hockey Club', city: 'Salt Lake City, UT', conf: 'Oeste', div: 'Central', abbr: 'UTA', c1: '#6CACE4', c2: '#010101' },
+      { name: 'Winnipeg Jets', city: 'Winnipeg, MB', conf: 'Oeste', div: 'Central', abbr: 'WPG', c1: '#041E42', c2: '#004C97' },
+
+      // Conferência Oeste - Divisão Pacífico
+      { name: 'Anaheim Ducks', city: 'Anaheim, CA', conf: 'Oeste', div: 'Pacífico', abbr: 'ANA', c1: '#F47A38', c2: '#B9975B' },
+      { name: 'Calgary Flames', city: 'Calgary, AB', conf: 'Oeste', div: 'Pacífico', abbr: 'CGY', c1: '#D2001C', c2: '#FAAF19' },
+      { name: 'Edmonton Oilers', city: 'Edmonton, AB', conf: 'Oeste', div: 'Pacífico', abbr: 'EDM', c1: '#041E42', c2: '#FF4C00' },
+      { name: 'Los Angeles Kings', city: 'Los Angeles, CA', conf: 'Oeste', div: 'Pacífico', abbr: 'LAK', c1: '#111111', c2: '#A2AAAD' },
+      { name: 'San Jose Sharks', city: 'San Jose, CA', conf: 'Oeste', div: 'Pacífico', abbr: 'SJS', c1: '#006D75', c2: '#EA7200' },
+      { name: 'Seattle Kraken', city: 'Seattle, WA', conf: 'Oeste', div: 'Pacífico', abbr: 'SEA', c1: '#001628', c2: '#99D9D9' },
+      { name: 'Vancouver Canucks', city: 'Vancouver, BC', conf: 'Oeste', div: 'Pacífico', abbr: 'VAN', c1: '#00205B', c2: '#00843D' },
+      { name: 'Vegas Golden Knights', city: 'Las Vegas, NV', conf: 'Oeste', div: 'Pacífico', abbr: 'VGK', c1: '#B4975A', c2: '#333F42' }
+    ];
+
+    let currentDivFilter = 'all';
+
+    function filterTeams(division) {
+      currentDivFilter = division;
+      document.querySelectorAll('.team-filter-btn').forEach(btn => {
+        if (btn.dataset.filter === division) {
+          btn.className = 'team-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-ice-600 text-white shadow-sm transition';
+        } else {
+          btn.className = 'team-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-700 border border-ice-200 hover:bg-ice-100 transition';
+        }
+      });
+      renderTeams();
+    }
+
+    function renderTeams() {
+      const searchQuery = document.getElementById('team-search').value.toLowerCase().trim();
+      const grid = document.getElementById('teams-grid');
+
+      const filtered = nhlTeams.filter(team => {
+        const matchesDiv = currentDivFilter === 'all' || team.div === currentDivFilter;
+        const matchesQuery =
+          team.name.toLowerCase().includes(searchQuery) ||
+          team.city.toLowerCase().includes(searchQuery) ||
+          team.abbr.toLowerCase().includes(searchQuery);
+        return matchesDiv && matchesQuery;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full text-center py-10 bg-ice-50 rounded-2xl border border-ice-200">
+            <p class="font-bold text-slate-700">Nenhum time encontrado com "${searchQuery}".</p>
+            <button onclick="document.getElementById('team-search').value=''; renderTeams();" class="mt-2 text-xs font-bold text-ice-600 underline">Limpar busca</button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(team => `
+        <div class="card-ice rounded-2xl p-4 flex items-center gap-3.5">
+          <!-- Escudo Representativo com Cores Oficiais -->
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center font-display font-black text-sm tracking-tight flex-shrink-0 shadow-sm border border-slate-200"
+               style="background-color: ${team.c1}; color: ${team.c1 === '#FFB81C' || team.c1 === '#FCB514' || team.c1 === '#B4975A' || team.c1 === '#6CACE4' ? '#0f172a' : '#ffffff'}; border-bottom: 4px solid ${team.c2};">
+            ${team.abbr}
+          </div>
+          <div class="min-w-0">
+            <h3 class="font-display font-bold text-sm text-slate-900 truncate" title="${team.name}">${team.name}</h3>
+            <p class="text-xs text-slate-500 truncate">${team.city}</p>
+            <span class="inline-block mt-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-ice-50 text-ice-700 border border-ice-200">
+              ${team.conf} • ${team.div}
+            </span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 6. MINI QUIZ DA EVY (4 PERGUNTAS)
+    const quizQuestions = [
+      {
+        q: '1. O que acontece quando um jogador atacante entra na zona ofensiva (cruza a linha azul) ANTES do disco (puck)?',
+        options: [
+          'É marcado Icing e o goleiro sai por 2 minutos.',
+          'É marcado Offside (impedimento) e o jogo para para um faceoff.',
+          'O gol vale dois pontos.'
+        ],
+        answer: 1,
+        explanation: 'Exato! O disco deve sempre cruzar a linha azul ofensiva antes de qualquer jogador atacante.'
+      },
+      {
+        q: '2. Quando um time sofre uma penalidade menor (Minor Penalty) de 2 minutos, como fica a contagem no gelo?',
+        options: [
+          'O time infrator joga com 4 jogadores de linha contra 5 do adversário (Power Play).',
+          'Ambos os times tiram um jogador e jogam 4 contra 4.',
+          'O jogo é suspenso até os 2 minutos acabarem.'
+        ],
+        answer: 0,
+        explanation: 'Isso mesmo! Quem está em vantagem numérica (5v4) está no Power Play, e quem defende com um a menos está no Penalty Kill.'
+      },
+      {
+        q: '3. Por que os jogadores da NHL trocam de linha a cada 45 a 60 segundos com o jogo rolando?',
+        options: [
+          'Porque a regra proíbe ficar mais de 1 minuto no gelo.',
+          'Devido à altíssima intensidade e velocidade da patinação, mantendo o ritmo no máximo.',
+          'Apenas para confundir o goleiro adversário.'
+        ],
+        answer: 1,
+        explanation: 'Perfeito! Patinar em explosão cansa muito rápido, então as trocas "on the fly" mantêm os atletas sempre descansados.'
+      },
+      {
+        q: '4. Como funciona a prorrogação (Overtime) durante os Playoffs da Stanley Cup?',
+        options: [
+          '5 minutos 3 contra 3 e depois Shootout (pênaltis).',
+          'Cara ou coroa se empatar duas vezes.',
+          'Períodos completos de 20 minutos (5 contra 5) em morte súbita até alguém marcar!'
+        ],
+        answer: 2,
+        explanation: 'Acertou! Nos playoffs não existe shootout: o jogo continua em períodos de 20 minutos 5v5 até sair o gol da vitória.'
+      }
+    ];
+
+    let userAnswers = [null, null, null, null];
+
+    function renderQuiz() {
+      const container = document.getElementById('quiz-container');
+      container.innerHTML = quizQuestions.map((item, qIndex) => `
+        <div class="p-5 rounded-2xl bg-ice-50/60 border border-ice-200">
+          <p class="font-display font-bold text-sm sm:text-base text-slate-900 mb-3">${item.q}</p>
+          <div class="space-y-2">
+            ${item.options.map((opt, optIndex) => {
+              const selected = userAnswers[qIndex] === optIndex;
+              let btnStyle = 'bg-white hover:bg-ice-50 border-ice-200 text-slate-700';
+              if (userAnswers[qIndex] !== null) {
+                if (optIndex === item.answer) {
+                  btnStyle = 'bg-emerald-50 border-emerald-500 text-emerald-900 font-bold';
+                } else if (selected && optIndex !== item.answer) {
+                  btnStyle = 'bg-rose-50 border-rose-400 text-rose-900';
+                }
+              }
+              return `
+                <button
+                  onclick="answerQuiz(${qIndex}, ${optIndex})"
+                  ${userAnswers[qIndex] !== null ? 'disabled' : ''}
+                  class="w-full text-left px-4 py-3 rounded-xl border text-xs sm:text-sm transition ${btnStyle}"
+                >
+                  ${opt}
+                </button>
+              `;
+            }).join('')}
+          </div>
+          ${userAnswers[qIndex] !== null ? `
+            <p class="mt-3 text-xs font-semibold ${userAnswers[qIndex] === item.answer ? 'text-emerald-700' : 'text-rose-600'}">
+              ${userAnswers[qIndex] === item.answer ? '✓ ' : '✕ '} ${item.explanation}
+            </p>
+          ` : ''}
+        </div>
+      `).join('');
+    }
+
+    function answerQuiz(qIndex, optIndex) {
+      if (userAnswers[qIndex] !== null) return;
+      userAnswers[qIndex] = optIndex;
+      renderQuiz();
+
+      if (userAnswers.every(a => a !== null)) {
+        const score = userAnswers.reduce((acc, ans, idx) => acc + (ans === quizQuestions[idx].answer ? 1 : 0), 0);
+        const resultBox = document.getElementById('quiz-result');
+        const scoreText = document.getElementById('quiz-score-text');
+        const feedbackText = document.getElementById('quiz-feedback-text');
+
+        resultBox.classList.remove('hidden');
+        scoreText.textContent = `Você acertou ${score} de 4 perguntas!`;
+        if (score === 4) {
+          feedbackText.textContent = 'Hat-Trick e muito mais! Você já está pronto(a) para assistir aos playoffs da NHL com a Evy!';
+        } else if (score >= 2) {
+          feedbackText.textContent = 'Mandou muito bem! Você já domina os fundamentos do hóquei no gelo.';
+        } else {
+          feedbackText.textContent = 'Bom começo no gelo! Dê uma olhada nos capítulos acima e tente novamente.';
+        }
+      }
+    }
+
+    function resetQuiz() {
+      userAnswers = [null, null, null, null];
+      document.getElementById('quiz-result').classList.add('hidden');
+      renderQuiz();
+    }
+
+    // Inicialização ao carregar a página
+    window.addEventListener('DOMContentLoaded', () => {
+      renderFormationVisual(0);
+      setPPScenario('5v4');
+      renderTeams();
+      renderQuiz();
+    });
+  </script>
+</body>
+</html>
